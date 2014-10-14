@@ -22,9 +22,10 @@ Or install it yourself as:
 
 ## Usage
 
-Set ENV['HOSTEDGRAPHITE_APIKEY']  to your api key.
+Set ```ENV['HOSTEDGRAPHITE_APIKEY']```  to your api key.
 Your API key can be found on your [account home](https://www.hostedgraphite.com/accounts/profile/) page.
-You can also set it programatically with
+
+You can also set it programatically with:
 
     HostedGraphite.api_key = 'YOUR API KEY'
 
