@@ -30,22 +30,22 @@ You can also set it programatically with:
     HostedGraphite.api_key = 'YOUR API KEY'
 
 ### Sending a metric via UDP
-
+    ```ruby
     HostedGraphite.protocol = HostedGraphite::UDP
     HostedGraphite.send_metric('foo.udp', 1.2)
-
+    ```
 
 ### Sending a metric via TCP
-
+    ```ruby
     HostedGraphite.protocol = HostedGraphite::TCP
     HostedGraphite.send_metric('foo.tcp', 1.2)
-
+    ```
 
 ### Sending a metric via HTTP
-
+    ```ruby
     HostedGraphite.protocol = HostedGraphite::HTTP
     HostedGraphite.send_metric('foo.http', 1.2)
-
+    ```
 
 ## Contributing
 
