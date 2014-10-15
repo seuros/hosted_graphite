@@ -14,38 +14,44 @@ gem 'hosted_graphite'
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install hosted_graphite
+```bash
+$ gem install hosted_graphite
+```
 
 ## Usage
 
-Set ```ENV['HOSTEDGRAPHITE_APIKEY']```  to your api key.
+Set ```ENV['HOSTEDGRAPHITE_APIKEY']```  to your hosted graphite API key.
 Your API key can be found on your [account home](https://www.hostedgraphite.com/accounts/profile/) page.
 
-You can also set it programatically with:
+You can also set the hosted graphite API key programatically with:
 
-    HostedGraphite.api_key = 'YOUR API KEY'
+```bash
+HostedGraphite.api_key = 'YOUR API KEY'
+```
 
 ### Sending a metric via UDP
-    ```ruby
-    HostedGraphite.protocol = HostedGraphite::UDP
-    HostedGraphite.send_metric('foo.udp', 1.2)
-    ```
+```ruby
+HostedGraphite.protocol = HostedGraphite::UDP
+HostedGraphite.send_metric('foo.udp', 1.2)
+```
 
 ### Sending a metric via TCP
-    ```ruby
-    HostedGraphite.protocol = HostedGraphite::TCP
-    HostedGraphite.send_metric('foo.tcp', 1.2)
-    ```
+```ruby
+HostedGraphite.protocol = HostedGraphite::TCP
+HostedGraphite.send_metric('foo.tcp', 1.2)
+```
 
 ### Sending a metric via HTTP
-    ```ruby
-    HostedGraphite.protocol = HostedGraphite::HTTP
-    HostedGraphite.send_metric('foo.http', 1.2)
-    ```
+```ruby
+HostedGraphite.protocol = HostedGraphite::HTTP
+HostedGraphite.send_metric('foo.http', 1.2)
+```
 
 ## Contributing
 
