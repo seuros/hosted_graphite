@@ -1,10 +1,10 @@
 require_relative 'helper'
-require 'hosted_graphite/statsd'
 
 class StatsDTest < Minitest::Test
   def setup
     @previous_api_key = HostedGraphite.api_key
     HostedGraphite.api_key = SecureRandom.uuid
+    require 'hosted_graphite/statsd'
   end
 
   def teardown

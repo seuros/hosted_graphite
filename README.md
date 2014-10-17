@@ -53,7 +53,7 @@ HostedGraphite.protocol = HostedGraphite::HTTP
 HostedGraphite.send_metric('foo.http', 1.2)
 ```
 
-### Hosted StatsD
+### HostedStatsD
 
 Enable Statsd on your [account](https://www.hostedgraphite.com/app/data-sources)
 
