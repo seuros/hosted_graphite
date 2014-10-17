@@ -1,4 +1,3 @@
-require 'net/http'
 # ANALYSE, is this implementation thread safe ?
 module HostedGraphite
   class HTTP < Protocol

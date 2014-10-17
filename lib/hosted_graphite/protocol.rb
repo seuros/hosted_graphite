@@ -1,3 +1,5 @@
+require 'socket'
+require 'net/http'
 module HostedGraphite
   class Protocol
     HOST = 'carbon.hostedgraphite.com'.freeze
@@ -21,10 +23,6 @@ module HostedGraphite
     private
       def build_message(name, value)
         [name, value].join(' ')
-      end
-
-      def addr_info
-        Addrinfo.tcp(HOST, PORT)
       end
   end
 end

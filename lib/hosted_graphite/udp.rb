@@ -1,4 +1,3 @@
-require 'socket'
 module HostedGraphite
   class UDP < Protocol
     private
@@ -18,6 +17,10 @@ module HostedGraphite
           s.connect(addr_info.ip_address, addr_info.ip_port)
           s
         end
+      end
+
+      def addr_info
+        Addrinfo.udp(HOST, PORT)
       end
   end
 end

@@ -35,22 +35,52 @@ You can also set the hosted graphite API key programatically with:
 HostedGraphite.api_key = 'YOUR API KEY'
 ```
 
-### Sending a metric via UDP
+#### Sending a metric via UDP
 ```ruby
 HostedGraphite.protocol = HostedGraphite::UDP
 HostedGraphite.send_metric('foo.udp', 1.2)
 ```
 
-### Sending a metric via TCP
+#### Sending a metric via TCP
 ```ruby
 HostedGraphite.protocol = HostedGraphite::TCP
 HostedGraphite.send_metric('foo.tcp', 1.2)
 ```
 
-### Sending a metric via HTTP
+#### Sending a metric via HTTP
 ```ruby
 HostedGraphite.protocol = HostedGraphite::HTTP
 HostedGraphite.send_metric('foo.http', 1.2)
+```
+
+### Hosted StatsD
+
+Enable Statsd on your [account](https://www.hostedgraphite.com/app/data-sources)
+
+Ensure these line are present in your application's Gemfile:
+
+```ruby
+gem 'hosted_graphite'
+gem 'statsd-ruby'
+```
+
+And then require
+
+```ruby
+require 'hosted_graphite/statsd'
+```
+
+#### Basic usage
+
+```ruby
+# Send some stats
+HostedGraphite.increment 'page_views'
+HostedGraphite.decrement 'likes_count'
+HostedGraphite.timing 'foo', 320
+HostedGraphite.gauge 'bar', 100
+
+# Use {#time} to time the execution of a block
+HostedGraphite.time('newsletter.monthly') { @newletter.deliver_now }
 ```
 
 ## Contributing
