@@ -51,8 +51,8 @@ module HostedGraphite
       @@statsd.send_stats stat, ms, :ms, sample_rate
     end
 
-    def time(stat, sample_rate=1)
-      @@statsd.time(stat, sample_rate)
+    def time(stat, sample_rate=1, &blk)
+      @@statsd.time(stat, sample_rate, &blk)
     end
   end
 end
