@@ -28,31 +28,31 @@ module HostedGraphite
 
   class << self
     def increment(stat, sample_rate=1)
-      @@statsd.count stat, 1, sample_rate
+      @@statsd.increment stat, sample_rate
     end
 
     def decrement(stat, sample_rate=1)
-      @@statsd.count stat, -1, sample_rate
+      @@statsd.decrement stat, sample_rate
     end
 
     def count(stat, count, sample_rate=1)
-      @@statsd.send_stats stat, count, :c, sample_rate
+      @@statsd.count stat, count, sample_rate
     end
 
     def gauge(stat, value, sample_rate=1)
-      @@statsd.send_stats stat, value, :g, sample_rate
+      @@statsd.gauge stat, value, sample_rate
     end
 
     def set(stat, value, sample_rate=1)
-      @@statsd.send_stats stat, value, :s, sample_rate
+      @@statsd.set stat, value, sample_rate
     end
 
     def timing(stat, ms, sample_rate=1)
-      @@statsd.send_stats stat, ms, :ms, sample_rate
+      @@statsd.timing stat, ms, sample_rate
     end
 
     def time(stat, sample_rate=1, &blk)
-      @@statsd.time(stat, sample_rate, &blk)
+      @@statsd.time stat, sample_rate, &blk
     end
   end
 end
