@@ -18,20 +18,22 @@ module HostedGraphite
     end
   end
 
-  def self.api_key
-    @@api_key
-  end
+  class << self
+    def api_key
+      @@api_key
+    end
 
-  def self.api_key=(key)
-    @@api_key = key
-  end
+    def api_key=(key)
+      @@api_key = key
+    end
 
-  def self.protocol
-    @@protocol
-  end
+    def protocol
+      @@protocol
+    end
 
-  def self.protocol=(protocol)
-    # TODO, accept symbols and string (:udp, 'tcp')
-    @@protocol = protocol.new
+    def protocol=(protocol)
+      # TODO, accept symbols and string (:udp, 'tcp')
+      @@protocol = protocol.new
+    end
   end
 end
