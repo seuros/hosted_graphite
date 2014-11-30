@@ -11,6 +11,7 @@ module HostedGraphite
   module_function :send_metric
   @@api_key = ENV['HOSTEDGRAPHITE_APIKEY']
   @@protocol = nil
+  @@debug = false
 
   class MissingAPIKey < StandardError
     def initialize
@@ -34,6 +35,14 @@ module HostedGraphite
     def protocol=(protocol)
       # TODO, accept symbols and string (:udp, 'tcp')
       @@protocol = protocol.new
+    end
+
+    def debug?
+      @@debug
+    end
+
+    def debug=(value)
+      @@debug = value
     end
   end
 end
