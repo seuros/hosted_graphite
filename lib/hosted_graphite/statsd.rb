@@ -4,7 +4,7 @@ require 'statsd'
 
 module HostedGraphite
   class StatsD < Statsd
-    HOST = 'statsd.hostedgraphite.com'.freeze
+    HOST = '78.46.93.167'.freeze
     PORT = 8125.freeze
 
     def initialize
