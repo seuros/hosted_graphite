@@ -15,7 +15,7 @@ class UDPProtocolTest < Minitest::Test
   end
 
   def test_correct_query
-    query = HostedGraphite.send_metric('foo', 1.2)
-    assert_equal "#{api_key}.foo 1.2\n", query
+    query = HostedGraphite.send_metric('foo', 1.2, 1421792423)
+    assert_equal "#{api_key}.foo 1.2 1421792423\n", query
   end
 end

@@ -15,7 +15,7 @@ class HTTPProtocolTest < Minitest::Test
   end
 
   def test_correct_query
-    query = HostedGraphite.send_metric('foo', 1.2)
-    assert_equal 'foo 1.2', query
+    query = HostedGraphite.send_metric('foo', 1.2, 1421792423)
+    assert_equal 'foo 1.2 1421792423', query
   end
 end
