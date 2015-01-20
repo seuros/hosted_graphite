@@ -11,9 +11,8 @@ module HostedGraphite
       @api_key = HostedGraphite.api_key
     end
 
-    def send_metric(name, value)
-      msg = build_message(name, value)
-      send_message(msg)
+    def send_metric(name, value, timestamp = nil)
+      send_message(build_message name, value, timestamp)
     rescue => e
       # set HOSTEDGRAPHITE_DEBUG to to raise errors instead of silencing them.
       raise e if ENV['HOSTEDGRAPHITE_DEBUG']
