@@ -21,8 +21,13 @@ module HostedGraphite
     end
 
     private
-      def build_message(name, value)
-        [name, value].join(' ')
+
+    def build_message(name, value, timestamp = nil)
+      unless timestamp
+        return [name, value].join ' '
       end
+
+      [name, value, timestamp].join ' '
+    end
   end
 end
