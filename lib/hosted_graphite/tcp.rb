@@ -2,12 +2,7 @@ module HostedGraphite
   class TCP < Protocol
     private
       def build_message(name, value, timestamp = nil)
-        if timestamp
-          message = [name, value, timestamp].join(' ') + "\n"
-        else
-          message = [name, value].join(' ') + "\n"
-        end
-
+        message = [name, value, timestamp].compact.join(' ') + "\n"
         [@api_key, message].join('.')
       end
 
