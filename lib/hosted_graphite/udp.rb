@@ -1,8 +1,13 @@
 module HostedGraphite
   class UDP < Protocol
     private
-      def build_message(name, value)
-        message = [name, value].join(' ') + "\n"
+      def build_message(name, value, timestamp = nil)
+        if timestamp
+          message = [name, value, timestamp].join(' ') + "\n"
+        else
+          message = [name, value].join(' ') + "\n"
+        end
+
         [@api_key, message].join('.')
       end
 
