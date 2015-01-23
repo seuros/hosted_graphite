@@ -1,5 +1,4 @@
 require_relative 'helper'
-require_relative 'fake_adapters'
 
 class TCPProtocolTest < Minitest::Test
   attr_reader :api_key

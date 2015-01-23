@@ -5,4 +5,5 @@ rescue LoadError
 end
 require 'securerandom'
 require 'minitest/autorun'
-require 'hosted_graphite'
+require 'hosted_graphite/testing'
+
