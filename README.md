@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/seuros/hosted_graphite.svg?branch=master)](https://travis-ci.org/seuros/hosted_graphite)
 [![Code Climate](https://codeclimate.com/github/seuros/hosted_graphite/badges/gpa.svg)](https://codeclimate.com/github/seuros/hosted_graphite)
+
 # HostedGraphite
 
 A Ruby client for HostedGraphite
@@ -37,19 +38,19 @@ HostedGraphite.api_key = 'YOUR API KEY'
 
 #### Sending a metric via UDP
 ```ruby
-HostedGraphite.protocol = HostedGraphite::UDP
+HostedGraphite.protocol = :udp
 HostedGraphite.send_metric('foo.udp', 1.2)
 ```
 
 #### Sending a metric via TCP
 ```ruby
-HostedGraphite.protocol = HostedGraphite::TCP
+HostedGraphite.protocol = :tcp
 HostedGraphite.send_metric('foo.tcp', 1.2)
 ```
 
 #### Sending a metric via HTTP
 ```ruby
-HostedGraphite.protocol = HostedGraphite::HTTP
+HostedGraphite.protocol = :http
 HostedGraphite.send_metric('foo.http', 1.2)
 ```
 
@@ -80,7 +81,7 @@ HostedGraphite.timing 'foo', 320
 HostedGraphite.gauge 'bar', 100
 
 # Use {#time} to time the execution of a block
-HostedGraphite.time('newsletter.monthly') { @newletter.deliver_now }
+HostedGraphite.time('newsletter.monthly') { @newsletter.deliver_now }
 ```
 
 ## Contributing

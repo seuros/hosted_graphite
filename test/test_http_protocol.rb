@@ -13,6 +13,10 @@ class HTTPProtocolTest < Minitest::Test
     HostedGraphite.api_key = @previous_api_key
   end
 
+  def test_http_protocol
+    assert_instance_of HostedGraphite::HTTP, HostedGraphite.protocol
+  end
+
   def test_correct_query
     query = HostedGraphite.send_metric('foo', 1.2, 1421792423)
     assert_equal 'foo 1.2 1421792423', query

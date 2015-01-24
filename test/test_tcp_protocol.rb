@@ -2,15 +2,20 @@ require_relative 'helper'
 
 class TCPProtocolTest < Minitest::Test
   attr_reader :api_key
+
   def setup
     @previous_api_key = HostedGraphite.api_key
     @api_key = SecureRandom.uuid
     HostedGraphite.api_key = @api_key
-    HostedGraphite.protocol = HostedGraphite::TCP
+    HostedGraphite.protocol = 'tcp'
   end
 
   def teardown
     HostedGraphite.api_key = @previous_api_key
+  end
+
+  def test_tcp_protocol
+    assert_instance_of HostedGraphite::TCP, HostedGraphite.protocol
   end
 
   def test_correct_query

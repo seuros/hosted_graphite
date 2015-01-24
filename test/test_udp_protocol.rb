@@ -6,11 +6,15 @@ class UDPProtocolTest < Minitest::Test
     @previous_api_key = HostedGraphite.api_key
     @api_key = SecureRandom.uuid
     HostedGraphite.api_key = @api_key
-    HostedGraphite.protocol = HostedGraphite::UDP
+    HostedGraphite.protocol = :udp
   end
 
   def teardown
     HostedGraphite.api_key = @previous_api_key
+  end
+
+  def test_udp_protocol
+    assert_instance_of HostedGraphite::UDP, HostedGraphite.protocol
   end
 
   def test_correct_query
