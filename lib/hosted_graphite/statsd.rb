@@ -4,7 +4,7 @@ require 'statsd'
 
 module HostedGraphite
   class StatsD < Statsd
-    HOST = 'statsd.hostedgraphite.com'.freeze
+    HOST = '78.46.93.167'.freeze
     PORT = 8125.freeze
 
     def initialize
@@ -28,31 +28,47 @@ module HostedGraphite
 
   class << self
     def increment(stat, sample_rate=1)
-      @@statsd.increment stat, sample_rate
+      unless HostedGraphite.debug?
+        @@statsd.increment stat, sample_rate
+      end
     end
 
     def decrement(stat, sample_rate=1)
-      @@statsd.decrement stat, sample_rate
+      unless HostedGraphite.debug?
+        @@statsd.decrement stat, sample_rate
+      end
     end
 
     def count(stat, count, sample_rate=1)
-      @@statsd.count stat, count, sample_rate
+      unless HostedGraphite.debug?
+        @@statsd.count stat, count, sample_rate
+      end
     end
 
     def gauge(stat, value, sample_rate=1)
-      @@statsd.gauge stat, value, sample_rate
+      unless HostedGraphite.debug?
+        @@statsd.gauge stat, value, sample_rate
+      end
     end
 
     def set(stat, value, sample_rate=1)
-      @@statsd.set stat, value, sample_rate
+      unless HostedGraphite.debug?
+        @@statsd.set stat, value, sample_rate
+      end
     end
 
     def timing(stat, ms, sample_rate=1)
-      @@statsd.timing stat, ms, sample_rate
+      unless HostedGraphite.debug?
+        @@statsd.timing stat, ms, sample_rate
+      end
     end
 
     def time(stat, sample_rate=1, &blk)
-      @@statsd.time stat, sample_rate, &blk
+      unless HostedGraphite.debug?
+        @@statsd.time stat, sample_rate, &blk
+      else
+        yield
+      end
     end
   end
 end
