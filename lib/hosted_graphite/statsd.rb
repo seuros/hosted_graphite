@@ -10,6 +10,7 @@ module HostedGraphite
     PORT = 8125.freeze
 
     def initialize
+      raise MissingAPIKey unless HostedGraphite.api_key
       super(HOST, PORT)
       @namespace = HostedGraphite.api_key
       @prefix    = "#{@namespace}."
