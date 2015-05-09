@@ -7,10 +7,11 @@ require 'hosted_graphite/http'
 
 module HostedGraphite
   extend Forwardable
+  extend self
+
   def_delegators :protocol, :send_metric
   module_function :send_metric
-  @@api_key = ENV['HOSTEDGRAPHITE_APIKEY']
-  @@protocol = nil
+  @protocol = nil
 
   class MissingAPIKey < StandardError
     def initialize
@@ -18,27 +19,25 @@ module HostedGraphite
     end
   end
 
-  class << self
-    def api_key
-      @@api_key
-    end
+  def api_key
+    @api_key ||= ENV['HOSTEDGRAPHITE_APIKEY']
+  end
 
-    def api_key=(key)
-      @@api_key = key
-    end
+  def api_key=(key)
+    @api_key = key
+  end
 
-    def protocol
-      @@protocol
-    end
+  def protocol
+    @protocol
+  end
 
-    def protocol=(protocol)
-      case protocol
-        when Class
-          @@protocol = protocol.new
-        when String, Symbol
-          protocol = protocol.to_s.upcase
-          @@protocol = const_get(protocol).new
-      end
+  def protocol=(protocol)
+    case protocol
+      when Class
+        @protocol = protocol.new
+      when String, Symbol
+        protocol   = protocol.to_s.upcase
+        @protocol = const_get(protocol).new
     end
   end
 end
