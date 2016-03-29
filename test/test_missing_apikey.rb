@@ -12,19 +12,19 @@ class MissingAPIKeyTest < Minitest::Test
 
   def test_udp_protocol
     assert_raises HostedGraphite::MissingAPIKey do
-      HostedGraphite::UDP.new
+      HostedGraphite::UDP.new.send_metric('foo', 1)
     end
   end
 
   def test_tcp_protocol
     assert_raises HostedGraphite::MissingAPIKey do
-      HostedGraphite::TCP.new
+      HostedGraphite::TCP.new.send_metric('foo', 1)
     end
   end
 
   def test_http_protocol
     assert_raises HostedGraphite::MissingAPIKey do
-      HostedGraphite::HTTP.new
+      HostedGraphite::HTTP.new.send_metric('foo', 1)
     end
   end
 end

@@ -11,7 +11,7 @@ module HostedGraphite
 
     def send_message(message)
       req = Net::HTTP::Post.new(@uri.request_uri)
-      req.basic_auth @api_key, nil
+      req.basic_auth api_key, nil
       req.body = message
       @http.request(req)
     end

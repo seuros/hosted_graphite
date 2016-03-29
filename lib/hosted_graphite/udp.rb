@@ -3,7 +3,7 @@ module HostedGraphite
     private
       def build_message(name, value, timestamp = nil)
         message = [name, value, timestamp].compact.join(' ') + "\n"
-        [@api_key, message].join('.')
+        [api_key, message].join('.')
       end
 
       def send_message(message)
