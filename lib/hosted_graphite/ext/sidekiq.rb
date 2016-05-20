@@ -12,7 +12,7 @@ module HostedGraphite
 
         def call(worker, msg, _, &block)
           w = msg['wrapped'] || worker.class.to_s
-          w = ['jobs',@namespace, w].compact.join('.')
+          w = [@namespace,'jobs', w].compact.join('.')
           begin
             @client.increment("#{w}.performed")
             @client.time("#{w}.time", &block)
