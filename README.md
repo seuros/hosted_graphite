@@ -84,6 +84,20 @@ HostedGraphite.gauge 'bar', 100
 HostedGraphite.time('newsletter.monthly') { @newsletter.deliver_now }
 ```
 
+### Extensions
+#### Sidekiq
+```ruby 
+  require 'hosted_graphite/ext/sidekiq'
+
+  Sidekiq.configure_server do |config|
+    config.server_middleware do |chain|
+      # chain.prepend Sidekiq::Middleware::Server::StatsdMetrics, namespace: 'my_app'
+      # or
+      # chain.prepend Sidekiq::Middleware::Server::Metrics
+    end
+  end
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/seuros/hosted_graphite/fork )
