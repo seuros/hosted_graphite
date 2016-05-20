@@ -5,7 +5,7 @@ module HostedGraphite
   module Ext
     module Sidekiq
       class Metrics
-        def initialize(namespace:)
+        def initialize(namespace=nil)
           @client = HostedGraphite
           @namespace = namespace
         end
@@ -25,7 +25,7 @@ module HostedGraphite
       end
 
       class StatsdMetrics < Metrics
-        def initialize(namespace:)
+        def initialize(namespace=nil)
           super
           require 'hosted_graphite/statsd'
           @client = StatsD.new

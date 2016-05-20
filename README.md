@@ -91,7 +91,8 @@ HostedGraphite.time('newsletter.monthly') { @newsletter.deliver_now }
 
   Sidekiq.configure_server do |config|
     config.server_middleware do |chain|
-      # chain.prepend HostedGraphite::Ext::Sidekiq::StatsdMetrics, namespace: 'my_app'
+      # my_app is an optional namespace
+      # chain.prepend HostedGraphite::Ext::Sidekiq::StatsdMetrics, 'my_app'
       # or
       # chain.prepend HostedGraphite::Ext::Sidekiq::Metrics
     end
