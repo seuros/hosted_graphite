@@ -33,8 +33,6 @@ module HostedGraphite
 
   def protocol=(protocol)
     case protocol
-      when Class
-        @protocol = protocol.new
       when String, Symbol
         protocol   = protocol.to_s.upcase
         @protocol = const_get(protocol).new
