@@ -12,13 +12,13 @@ module HostedGraphite
 
         def call(worker, msg, _, &block)
           w = msg['wrapped'] || worker.class.to_s
-          w = [@namespace, w].compact.join('.')
+          w = ['jobs',@namespace, w].compact.join('.')
           begin
-            @client.increment("jobs.#{w}.performed")
-            @client.time("jobs.#{w}.time", &block)
-            @client.increment("jobs.#{w}.succeed")
+            @client.increment("#{w}.performed")
+            @client.time("#{w}.time", &block)
+            @client.increment("#{w}.succeed")
           rescue Exception
-            @client.increment("jobs.#{w}.failed")
+            @client.increment("#{w}.failed")
             raise
           end
         end
