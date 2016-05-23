@@ -27,7 +27,7 @@ module HostedGraphite
       class StatsdMetrics < Metrics
         def initialize(namespace=nil)
           super
-          require 'hosted_graphite/protocol/statsd'
+          require 'hosted_graphite/protocols/statsd'
           @client = STATSD.new
         end
       end
