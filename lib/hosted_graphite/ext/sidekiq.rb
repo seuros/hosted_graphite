@@ -7,12 +7,12 @@ module HostedGraphite
       class Metrics
         def initialize(namespace=nil)
           @client = HostedGraphite
-          @namespace = namespace
+          HostedGraphite.namespace = namespace
         end
 
         def call(worker, msg, _, &block)
           w = msg['wrapped'] || worker.class.to_s
-          w = [@namespace,'jobs', w].compact.join('.')
+          w = ['jobs', w].compact.join('.')
           begin
             @client.increment("#{w}.performed")
             @client.time("#{w}.time", &block)
