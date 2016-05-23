@@ -1,4 +1,4 @@
-gem 'sidekiq', '>=  4.1.1'
+gem 'sidekiq', '>=  4.1.2'
 require 'sidekiq'
 
 module HostedGraphite
@@ -27,8 +27,8 @@ module HostedGraphite
       class StatsdMetrics < Metrics
         def initialize(namespace=nil)
           super
-          require 'hosted_graphite/statsd'
-          @client = StatsD.new
+          require 'hosted_graphite/protocol/statsd'
+          @client = STATSD.new
         end
       end
     end

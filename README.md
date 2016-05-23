@@ -65,15 +65,10 @@ gem 'hosted_graphite'
 gem 'statsd-ruby'
 ```
 
-And then require
-
-```ruby
-require 'hosted_graphite/statsd'
-```
-
 #### Basic usage
 
 ```ruby
+HostedGraphite.protocol = :statsd
 # Send some stats
 HostedGraphite.increment 'page_views'
 HostedGraphite.decrement 'likes_count'

@@ -20,4 +20,5 @@ module HostedGraphite
         Addrinfo.tcp(HOST, PORT)
       end
   end
+  register('tcp', TCP)
 end

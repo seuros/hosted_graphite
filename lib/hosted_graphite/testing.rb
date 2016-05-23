@@ -1,5 +1,8 @@
 require 'hosted_graphite'
 require 'securerandom'
+require 'hosted_graphite/protocols/http'
+require 'hosted_graphite/protocols/tcp'
+require 'hosted_graphite/protocols/udp'
 module HostedGraphite
     @api_key = SecureRandom.hex
   [TCP, UDP, HTTP].each do |protocol|

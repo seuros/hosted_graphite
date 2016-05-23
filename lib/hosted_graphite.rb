@@ -1,17 +1,16 @@
 require 'forwardable'
 require 'hosted_graphite/version'
 require 'hosted_graphite/protocol'
-require 'hosted_graphite/udp'
-require 'hosted_graphite/tcp'
-require 'hosted_graphite/http'
+
 
 module HostedGraphite
   extend Forwardable
   extend self
+  attr_reader :namespace, :protocol
+  attr_writer :namespace, :api_key
 
   def_delegators :protocol, :send_metric
   module_function :send_metric
-  @protocol = nil
 
   class MissingAPIKey < StandardError
     def initialize
@@ -23,19 +22,14 @@ module HostedGraphite
     @api_key ||= ENV['HOSTEDGRAPHITE_APIKEY']
   end
 
-  def api_key=(key)
-    @api_key = key
-  end
+   def protocol=(protocol)
+    protocol   = protocol.to_s.downcase
+    require "hosted_graphite/protocols/#{protocol}"
+    @protocol = @registred_protocols[protocol].new
+   end
 
-  def protocol
-    @protocol
-  end
-
-  def protocol=(protocol)
-    case protocol
-      when String, Symbol
-        protocol   = protocol.to_s.upcase
-        @protocol = const_get(protocol).new
-    end
+  @registred_protocols = {}
+  private def register(name, klass)
+    @registred_protocols[name] = klass
   end
 end

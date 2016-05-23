@@ -23,4 +23,6 @@ module HostedGraphite
         Addrinfo.udp(HOST, PORT)
       end
   end
+
+  register('udp', UDP)
 end

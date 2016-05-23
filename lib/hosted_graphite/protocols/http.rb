@@ -16,4 +16,5 @@ module HostedGraphite
       @http.request(req)
     end
   end
+  register('http', HTTP)
 end

@@ -3,14 +3,7 @@ require_relative 'helper'
 class HTTPProtocolTest < Minitest::Test
   attr_reader :api_key
   def setup
-    @previous_api_key = HostedGraphite.api_key
-    @api_key = SecureRandom.uuid
-    HostedGraphite.api_key = @api_key
-    HostedGraphite.protocol = HostedGraphite::HTTP
-  end
-
-  def teardown
-    HostedGraphite.api_key = @previous_api_key
+    HostedGraphite.protocol = :http
   end
 
   def test_http_protocol
