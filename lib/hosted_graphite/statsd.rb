@@ -1,1 +1,1 @@
-HostedGraphite.protocol = :stastd
+HostedGraphite.protocol = :statsd
