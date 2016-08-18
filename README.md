@@ -36,6 +36,12 @@ You can also set the hosted graphite API key programatically with:
 HostedGraphite.api_key = 'YOUR API KEY'
 ```
 
+You may also specify a namespace for your metrics, which will be applied if you are using the StatsD backend:
+
+```bash
+HostedGraphite.namespace = 'our_app'
+```
+
 #### Sending a metric via UDP
 ```ruby
 HostedGraphite.protocol = :udp
