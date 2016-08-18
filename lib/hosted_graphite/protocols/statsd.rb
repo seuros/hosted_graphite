@@ -12,7 +12,11 @@ module HostedGraphite
     def initialize
       raise MissingAPIKey unless HostedGraphite.api_key
       super(HOST, PORT)
-      self.namespace = [HostedGraphite.api_key,HostedGraphite.namespace].join('.')
+      if HostedGraphite.namespace
+        self.namespace = [HostedGraphite.api_key,HostedGraphite.namespace].join('.')
+      else
+        self.namespace = HostedGraphite.api_key
+      end
     end
   end
 
