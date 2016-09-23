@@ -32,7 +32,7 @@ Your API key can be found on your [account home](https://www.hostedgraphite.com/
 
 You can also set the hosted graphite API key programatically with:
 
-```bash
+```ruby
 HostedGraphite.api_key = 'YOUR API KEY'
 ```
 
@@ -82,16 +82,16 @@ HostedGraphite.time('newsletter.monthly') { @newsletter.deliver_now }
 ### Extensions
 #### Sidekiq
 ```ruby
-  require 'hosted_graphite/ext/sidekiq'
+require 'hosted_graphite/ext/sidekiq'
 
-  Sidekiq.configure_server do |config|
-    config.server_middleware do |chain|
-      # my_app is an optional namespace
-      # chain.prepend HostedGraphite::Ext::Sidekiq::StatsdMetrics, 'my_app'
-      # or
-      # chain.prepend HostedGraphite::Ext::Sidekiq::Metrics
-    end
+Sidekiq.configure_server do |config|
+  config.server_middleware do |chain|
+    # my_app is an optional namespace
+    # chain.prepend HostedGraphite::Ext::Sidekiq::StatsdMetrics, 'my_app'
+    # or
+    # chain.prepend HostedGraphite::Ext::Sidekiq::Metrics
   end
+end
 ```
 
 ### Disable sends for local/test environments

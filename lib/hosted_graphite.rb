@@ -29,11 +29,11 @@ module HostedGraphite
   end
   module_function :send_metric
 
-   def protocol=(protocol)
+  def protocol=(protocol)
     protocol   = protocol.to_s.downcase
     require "hosted_graphite/protocols/#{protocol}"
     @protocol = @registred_protocols[protocol].new
-   end
+  end
 
   @registred_protocols = {}
   private def register(name, klass)
