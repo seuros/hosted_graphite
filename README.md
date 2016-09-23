@@ -81,7 +81,7 @@ HostedGraphite.time('newsletter.monthly') { @newsletter.deliver_now }
 
 ### Extensions
 #### Sidekiq
-```ruby 
+```ruby
   require 'hosted_graphite/ext/sidekiq'
 
   Sidekiq.configure_server do |config|
@@ -92,6 +92,12 @@ HostedGraphite.time('newsletter.monthly') { @newsletter.deliver_now }
       # chain.prepend HostedGraphite::Ext::Sidekiq::Metrics
     end
   end
+```
+
+### Disable sends for local/test environments
+
+```ruby
+HostedGraphite.enabled = false unless Rails.env.production?
 ```
 
 ## Contributing
