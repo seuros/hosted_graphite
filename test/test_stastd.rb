@@ -28,4 +28,22 @@ class StatsDTest < Minitest::Test
   def test_respond_to_increment
     assert_respond_to HostedGraphite, :increment
   end
+
+  def test_initialize_without_namespace
+    old_namespace = HostedGraphite.namespace
+    HostedGraphite.namespace = nil
+
+    assert_equal HostedGraphite.api_key, HostedGraphite::STATSD.new.namespace
+
+    HostedGraphite.namespace = old_namespace
+  end
+
+  def test_initialize_with
+    old_namespace = HostedGraphite.namespace
+    HostedGraphite.namespace = "foo"
+
+    assert_equal "#{HostedGraphite.api_key}.foo", HostedGraphite::STATSD.new.namespace
+
+    HostedGraphite.namespace = old_namespace
+  end
 end
