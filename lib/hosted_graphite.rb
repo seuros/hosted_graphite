@@ -7,8 +7,9 @@ module HostedGraphite
   extend Forwardable
   extend self
 
-  attr_reader :namespace, :enabled, :protocol
-  attr_writer :namespace, :enabled, :api_key
+  attr_accessor :namespace, :enabled
+  attr_reader :protocol
+  attr_writer :api_key
 
   class MissingAPIKey < StandardError
     def initialize
@@ -36,7 +37,9 @@ module HostedGraphite
   end
 
   @registred_protocols = {}
-  private def register(name, klass)
+  private
+
+  def register(name, klass)
     @registred_protocols[name] = klass
   end
 end

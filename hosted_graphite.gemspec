@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'A Ruby client for HostedGraphite'
   spec.homepage      = 'https://github.com/seuros/hosted_graphite'
   spec.license       = 'Apache 2.0'
-  spec.required_ruby_version     = '>= 1.9.3'
+  spec.required_ruby_version     = '>= 2.0.0'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.test_files    = spec.files.grep(%r{^(test)/})
