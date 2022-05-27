@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 gem 'sidekiq', '>=  4.1.2'
 require 'sidekiq'
 
@@ -5,7 +7,7 @@ module HostedGraphite
   module Ext
     module Sidekiq
       class Metrics
-        def initialize(namespace=nil)
+        def initialize(namespace = nil)
           @client = HostedGraphite
           HostedGraphite.namespace = namespace
         end
@@ -25,7 +27,7 @@ module HostedGraphite
       end
 
       class StatsdMetrics < Metrics
-        def initialize(namespace=nil)
+        def initialize(namespace = nil)
           super
           require 'hosted_graphite/protocols/statsd'
           @client = STATSD.new

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'helper'
 
 class DefaultBehaviourTest < Minitest::Test
@@ -10,11 +12,10 @@ class DefaultBehaviourTest < Minitest::Test
   end
 
   def test_send_by_default
-    assert_send [HostedGraphite.protocol, :send_metric, *['foo', 1.2]]
+    assert HostedGraphite.protocol.send_metric('foo', 1.2)
     HostedGraphite.send_metric 'foo', 1.2
   end
 end
-
 
 class DisabledTest < Minitest::Test
   def setup

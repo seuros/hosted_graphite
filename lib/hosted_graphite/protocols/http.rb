@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ANALYSE, is this implementation thread safe ?
 module HostedGraphite
   class HTTP < Protocol

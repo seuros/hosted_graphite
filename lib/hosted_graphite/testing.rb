@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'hosted_graphite'
 require 'securerandom'
 require 'hosted_graphite/protocols/http'
 require 'hosted_graphite/protocols/tcp'
 require 'hosted_graphite/protocols/udp'
 module HostedGraphite
-    @api_key = SecureRandom.hex
+  @api_key = SecureRandom.hex
   [TCP, UDP, HTTP].each do |protocol|
     protocol.class_eval do
-
       private
 
       def send_message(message)
@@ -20,12 +21,12 @@ module HostedGraphite
     def testing(*)
       yield if block_given?
     end
-    alias_method :increment, :testing
-    alias_method :decrement, :testing
-    alias_method :count, :testing
-    alias_method :gauge, :testing
-    alias_method :set, :testing
-    alias_method :timing, :testing
-    alias_method :time, :testing
+    alias increment testing
+    alias decrement testing
+    alias count testing
+    alias gauge testing
+    alias set testing
+    alias timing testing
+    alias time testing
   end
 end

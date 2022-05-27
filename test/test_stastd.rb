@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'helper'
 
 class StatsDTest < Minitest::Test
@@ -40,7 +42,7 @@ class StatsDTest < Minitest::Test
 
   def test_initialize_with
     old_namespace = HostedGraphite.namespace
-    HostedGraphite.namespace = "foo"
+    HostedGraphite.namespace = 'foo'
 
     assert_equal "#{HostedGraphite.api_key}.foo", HostedGraphite::STATSD.new.namespace
 

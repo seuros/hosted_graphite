@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'helper'
 
 class TCPProtocolTest < Minitest::Test
@@ -12,7 +14,7 @@ class TCPProtocolTest < Minitest::Test
   end
 
   def test_correct_query
-    query = HostedGraphite.send_metric('foo', 1.2, 1421792423)
+    query = HostedGraphite.send_metric('foo', 1.2, 1_421_792_423)
     assert_equal "#{HostedGraphite.api_key}.foo 1.2 1421792423\n", query
   end
 end
