@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/seuros/hosted_graphite.svg?branch=master)](https://travis-ci.org/seuros/hosted_graphite)
+[![Build status](https://github.com/seuros/hosted_graphite/actions/workflows/ci.yml/badge.svg)](https://github.com/seuros/hosted_graphite/actions/workflows/ci.yml)
 [![Code Climate](https://codeclimate.com/github/seuros/hosted_graphite/badges/gpa.svg)](https://codeclimate.com/github/seuros/hosted_graphite)
 
 # HostedGraphite
